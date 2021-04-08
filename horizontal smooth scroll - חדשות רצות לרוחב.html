@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	body{font-family:arial;direction:rtl;}
+	button{margin:0;padding:0;background:none;border:none;cursor:pointer;outline:none;}
+	
+	.horizontalSmoothScrollWrap{display:flex;align-items:center;width:1000px;margin:100px auto 0;}
+	.topNewsTextWrap{margin:0 22px 0 0;width:-webkit-calc(100% - 45px);width: calc(100% - 45px);white-space:nowrap;position:relative;overflow:hidden;}
+	.horizontalSmoothScroll{display:inline-block;vertical-align:top;position:relative;font-size:0;}
+	.horizontalSmoothScrollTextItem{display:inline-block;vertical-align:top;padding:0 36px 0 0;position:relative;font-size: 16px;}
+	.horizontalSmoothScrollTextItem::before{content:'';background:#08d408;width:6px;height:6px;position:absolute;right:15px;top:50%;border-radius:50%;margin:-3px 0 0 0;}
+	.horizontalSmoothScrollPlayBtn, .horizontalSmoothScrollPauseBtn{display:none;width:23px;height:23px;flex-shrink:0;}
+	.horizontalSmoothScrollPlayBtn.active, .horizontalSmoothScrollPauseBtn.active{display:block;}
+	</style>
+</head>
+<body>
+	
+	<div class="horizontalSmoothScrollWrap">
+		<button type="button" class="horizontalSmoothScrollPauseBtn active" title="לחצו כאן לעצירת החדשות">
+			<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M12.5 24C6.14874 24 1 18.8513 1 12.5C1 6.14874 6.14874 1 12.5 1C18.8513 1 24 6.14874 24 12.5C23.9928 18.8483 18.8483 23.9928 12.5 24ZM12.5 1.76667C6.57213 1.76667 1.76667 6.57213 1.76667 12.5C1.76667 18.4279 6.57213 23.2333 12.5 23.2333C18.4279 23.2333 23.2333 18.4279 23.2333 12.5C23.2266 6.57496 18.425 1.77342 12.5 1.76667Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+				<path d="M10.5835 17.4833C10.3718 17.4833 10.2002 17.3117 10.2002 17.1V7.89994C10.2002 7.68824 10.3718 7.5166 10.5835 7.5166C10.7952 7.5166 10.9669 7.68824 10.9669 7.89994V17.1C10.9669 17.3117 10.7952 17.4833 10.5835 17.4833Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+				<path d="M14.4166 17.4833C14.2048 17.4833 14.0332 17.3117 14.0332 17.1V7.89994C14.0332 7.68824 14.2048 7.5166 14.4166 7.5166C14.6283 7.5166 14.7999 7.68824 14.7999 7.89994V17.1C14.7999 17.3117 14.6283 17.4833 14.4166 17.4833Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+			</svg>
+		</button>
+		<button type="button" class="horizontalSmoothScrollPlayBtn" title="לחצו כאן להפעלת החדשות">
+			<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M12.5 24C6.14874 24 1 18.8513 1 12.5C1 6.14874 6.14874 1 12.5 1C18.8513 1 24 6.14874 24 12.5C23.9928 18.8483 18.8483 23.9928 12.5 24ZM12.5 1.76667C6.57213 1.76667 1.76667 6.57213 1.76667 12.5C1.76667 18.4279 6.57213 23.2333 12.5 23.2333C18.4279 23.2333 23.2333 18.4279 23.2333 12.5C23.2266 6.57496 18.425 1.77342 12.5 1.76667Z" fill="#000" stroke="#000" stroke-width="0.5"/>
+				<path d="M9.39846 8.24268C9.39947 7.85895 9.81449 7.61934 10.1473 7.81033L17.9734 12.3013C18.3077 12.4932 18.3084 12.9753 17.9745 13.168L10.1248 17.7001C9.79092 17.8928 9.37375 17.6512 9.37476 17.2658L9.39846 8.24268Z" fill="#000"/>
+			</svg>
+		</button>
+		<div class="topNewsTextWrap">
+			<div class="horizontalSmoothScroll">
+				<div class="horizontalSmoothScrollTextItem">
+					<b>08/11/2020</b>
+					בהתאם להוראת שעה החל מיום 1.9.2020 ועד 31.12.2020 תהיה הכמות המוכרת 8 מ”ק לכל דייר במקום 7 מ”ק לתקופה
+				</div>
+				<div class="horizontalSmoothScrollTextItem">
+					<b>09/12/2020</b>
+					בהתאם להוראת שעה החל מיום 1.9.2020 ועד 31.12.2020 תהיה הכמות המוכרת 8 מ”ק לכל דייר במקום 7 מ”ק לתקופה
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript">
+//Horizontal Smooth Scroll
+if(document.querySelector(".horizontalSmoothScroll")){
+	var parent = document.querySelector('.horizontalSmoothScroll').parentNode;
+	parent.appendChild(document.querySelector('.horizontalSmoothScroll').cloneNode(true));
+	document.querySelectorAll('.horizontalSmoothScroll')[1].classList.add('cloned');
+	var parentRightOffset = parent.offsetLeft + parent.clientWidth;
+	newsHorizontalSmoothScroll(0)
+	function newsHorizontalSmoothScroll(left){
+		var self = document.querySelectorAll('.horizontalSmoothScroll')[0];
+		window.news = setInterval(function(){
+			left++;
+			for(var i = 0; i < document.querySelectorAll('.horizontalSmoothScroll').length; i++){
+				document.querySelectorAll('.horizontalSmoothScroll')[i].style.left = left+'px';
+			};
+			if(self.offsetLeft >= parentRightOffset){
+				parent.appendChild(self);
+				for(var i = 0; i < document.querySelectorAll('.horizontalSmoothScroll').length; i++){
+					document.querySelectorAll('.horizontalSmoothScroll')[i].style.left = 0;
+				};
+				clearInterval(window.news);
+				newsHorizontalSmoothScroll(0);
+			}
+		},20);
+	};
+	//Stop news
+	document.querySelector('.horizontalSmoothScrollPauseBtn').addEventListener('click',function(){
+		this.classList.remove('active');
+		document.querySelector('.horizontalSmoothScrollPlayBtn').classList.add('active');
+		clearInterval(window.news);
+	});
+	//Play news
+	document.querySelector('.horizontalSmoothScrollPlayBtn').addEventListener('click',function(){
+		this.classList.remove('active');
+		document.querySelector('.horizontalSmoothScrollPauseBtn').classList.add('active');
+		var left = document.querySelectorAll('.horizontalSmoothScroll')[0].style.left.replace('px','');
+		newsHorizontalSmoothScroll(left);
+	});
+}
+</script>
+
+</body>
+</html>
